@@ -1,73 +1,50 @@
+import React, { Component } from 'react';
+import Operand from './operand'
+import Number from './number'
 import 'bootstrap/dist/css/bootstrap.css'
 //import logo from './logo.svg';
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="container w-50">
         {/* textbox area for the result. */}
         <div className="row">
-          <div class="col-md-12">
-            <input type="text" name="" value="" />
+          <div className="col-md-12">
+            <div className="w-100 border rounded p-3 m-2 text-right">
+              
+            </div>
           </div>
         </div>
 
         {/* buttons area. */}
         <div className="row">
           {/* First row. */}
-          <div class="col-md-3">
-            <button name=""> 7 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> 8 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> 9 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> % </button>
-          </div>
+          <Number num="7" />
+          <Number num="8" />
+          <Number num="9" />
+          <Operand operand="÷" />
 
           {/* Second row. */}
-          <div class="col-md-3">
-            <button name=""> 4 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> 5 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> 6 </button>
-          </div>
-          <div class="col-md-3">
-            <button type="submit" name="" value="X" />
-          </div>
+          <Number num="4" />
+          <Number num="5" />
+          <Number num="6" />
+          <Operand operand="x" />
 
           {/* Third row. */}
-          <div class="col-md-3">
-            <button name=""> 1 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> 2 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> 3 </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> - </button>
-          </div>
+          <Number num="1" />
+          <Number num="2" />
+          <Number num="3" />
+          <Operand operand="-" />
 
           {/* Last row. */}
-          <div class="col-md-3">
-            <button name=""> 0 </button>
+          <Number num="0" />
+          <div className="col-md-3">
+            <button name="dot" className="btn btn-light btn-block m-2" role="button" aria-pressed="true"> . </button>
           </div>
-          <div class="col-md-3">
-            <button name=""> . </button>
+          <div className="col-md-3">
+            <button name="sum" className="btn btn-success btn-block m-2" role="button" aria-pressed="true"> = </button>
           </div>
-          <div class="col-md-3">
-            <button name=""> + </button>
-          </div>
-          <div class="col-md-3">
-            <button name=""> = </button>
-          </div>
+          <Operand operand="+" />
         </div>
       </div>
   );
