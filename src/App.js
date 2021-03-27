@@ -63,7 +63,7 @@ export default class App extends Component {
   inputOperator(nextOperator) {
     let nextDisplayValue = this.state.displayValue;
     let currentOperand = parseFloat(this.state.displayValue);
-    if(this.state.operator) {
+    if(!this.state.waitOperand && (this.state.operator != null)) {
       currentOperand = this.execOperation(this.state.firstOperand, currentOperand, this.state.operator);
       nextDisplayValue = String(currentOperand);
     } 
