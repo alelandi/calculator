@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Result from './result'
 import Operand from './operand'
 import Number from './number'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -9,11 +10,7 @@ function App() {
     <div className="container w-50">
         {/* textbox area for the result. */}
         <div className="row">
-          <div className="col-md-12">
-            <div className="w-100 border rounded p-3 m-2 text-right">
-              
-            </div>
-          </div>
+          <Result res="0" />
         </div>
 
         {/* buttons area. */}
