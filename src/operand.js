@@ -10,7 +10,7 @@ export default class Operand extends Component {
     render() {
         return (
             <div className="col-md-3">
-                <button className={bStyle} role="button" aria-pressed="true">{this.props.operand}</button>
+                <button className={bStyle} aria-pressed="true" onClick={this.props.onClick}>{this.props.operand}</button>
             </div>
         );
     }
