@@ -45,6 +45,9 @@ export default class App extends Component {
       case '=':
         result = secondOp;
         break;
+      default:
+        result = 0;
+        break;
     }
     return result;
   }
@@ -80,7 +83,7 @@ export default class App extends Component {
   }
 
   inputDot() {
-    let nextDisplayValue = this.state.waitOperand ? "0" + "." : (this.state.displayValue + ".");
+    let nextDisplayValue = this.state.waitOperand ? "0." : (this.state.displayValue + ".");
     this.setState({
       displayValue: nextDisplayValue,
       waitOperand: false
