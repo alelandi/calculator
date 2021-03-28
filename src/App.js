@@ -15,6 +15,9 @@ export default class App extends Component {
       operator: null,
       waitOperand: false
     }
+
+    this.clearDisplayRes = this.clearDisplayRes.bind(this);
+    this.changeSign = this.changeSign.bind(this);
     this.inputOperator = this.inputOperator.bind(this);
     this.execOperation = this.execOperation.bind(this);
     this.inputNum = this.inputNum.bind(this);
@@ -36,17 +39,41 @@ export default class App extends Component {
       case '/':
         result = firstOp / secondOp;
         break;
+      case '%':
+        result = firstOp % secondOp;
+        break;
       case '=':
         result = secondOp;
         break;
     }
-
     return result;
+  }
+
+  clearDisplayRes() {
+    this.setState({
+      displayValue: "0",
+      firstOperand: null,
+      operator: null,
+      waitOperand: false
+    })
+  }
+
+  changeSign() {
+    let nextDisplayValue = this.state.displayValue;
+    
+    if (this.state.displayValue.charAt(0) === '-')
+      nextDisplayValue = this.state.displayValue.substr(1);
+    else if (this.state.displayValue !== '0')
+      nextDisplayValue = '-' + this.state.displayValue;
+    
+    this.setState({ 
+      displayValue: nextDisplayValue
+    }); 
   }
 
   inputNum(num) {
     let nextDisplayValue = (this.state.waitOperand || this.state.displayValue === "0") ? num : (this.state.displayValue + num);
-    this.setState(  { 
+    this.setState({
       displayValue: nextDisplayValue,
       waitOperand: false
     });
@@ -68,12 +95,12 @@ export default class App extends Component {
       nextDisplayValue = String(currentOperand);
     } 
 
-    this.setState((prevState) => ({
+    this.setState({
       displayValue: nextDisplayValue,
       firstOperand: currentOperand,
       operator: nextOperator,
       waitOperand: true
-    }));
+    });
   }
 
   render() {
@@ -86,6 +113,12 @@ export default class App extends Component {
 
         {/* Buttons area. */}
         <div className="row">
+
+          <Operand operand="AC" onClick={() => this.clearDisplayRes()} />
+          <Operand operand="+/-" onClick={() => this.changeSign()} />
+          <Operand operand="%" onClick={() => this.inputOperator("%")} />
+          <Operand operand="DEL" onClick={() => this.clearDisplayRes()} />
+
           {/* First row. */}
           <Number num="7" onClick={() => this.inputNum("7")} />
           <Number num="8" onClick={() => this.inputNum("8")} />
